@@ -1,0 +1,110 @@
+#include <iostream>
+#define MAX 100
+
+using namespace std;
+
+int b[MAX];
+int c[MAX];
+int nb;
+int nc;
+
+void Distribute(int  a[], int N, int& nb, int& nc, int k) 
+{
+    int i; 
+    int pa;
+    int pb;
+    int pc; 
+    pa = pb = pc = 0;   	
+    while (pa < N) 
+    {
+        for (i = 0; (pa < N) && (i < k); i++, pa++, pb++) 
+        { 
+            b[pb] = a[pa]; 
+        }
+        for (i = 0; (pa < N) && (i < k); i++, pa++, pc++) 
+        {	  	
+            c[pc] = a[pa]; 
+        }
+    }
+    nb = pb; nc = pc;
+}
+void MergeSubarr(int a[], int nb, int nc, int& pa, int& pb, int& pc, int k)
+{
+    int rb;
+    int rc;
+    rb = min(nb, pb + k);
+    rc = min(nc, pb + k);
+
+    while ((pb < rb) && (pc < rc))
+    {
+        if (b[pb] < c[pc])
+            a[pa++] = b[pb++];
+        else  
+            a[pa++] = c[pc++];
+    }
+
+    while (pb < rb)
+    {
+        a[pa++] = b[pb++];
+    }
+
+    while (pc < rc)
+    {
+        a[pa++] = c[pc++];
+    }
+}
+void Merge(int a[], int nb, int nc, int k) 
+{
+    int pa;
+    int pb;
+    int pc;  	
+    pa = pb = pc = 0;
+
+    while ((pb < nb) && (pc < nc))
+    {
+        MergeSubarr(a, nb, nc, pa, pb, pc, k);
+    }
+
+    while (pb < nb) 
+    {
+        a[pa++] = b[pb++]; //Ghi chú: câu l?nh này có ý nghia gì? 
+    }
+
+    while (pc < nc) 
+    {
+        a[pa++] = c[pc++]; //Ghi chú: câu l?nh này có ý nghia gì? 
+    }
+}
+
+
+void MergeSort(int a[], int N)
+{
+    int k;
+    for (k = 1; k < N; k *= 2)
+    {
+        Distribute(a, N, nb, nc, k);
+        Merge(a, nb, nc, k);
+    }
+}
+
+
+int main() {
+    int a[] = { 12, 11, 13, 5, 6, 7, 1};
+    //int b1[] = { 13, 10, 14, 52, 63, 7 };
+    int N = sizeof(a) / sizeof(a[0]);
+
+    //int k = 1; // Kích thu?c phân do?n nh? nh?t
+
+    cout << "Given array is:\n";
+    for (int i = 0; i < N; i++)
+        cout << a[i] << " ";
+    cout << endl;
+    MergeSort(a, N);
+
+    cout << "\nSorted array is:\n";
+    for (int i = 0; i < N; i++)
+        cout << a[i] << " ";
+    cout << endl;
+
+    return 0;
+}

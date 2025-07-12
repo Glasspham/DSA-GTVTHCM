@@ -1,0 +1,27 @@
+2. Duyệt từ cuối dãy về, xét từng cặp a[i] và a[i-1] nếu bằng nhau thì không tăng biến đếm, nếu không bằng tăng biến đếm đến khi biến đếm = 2 thì dừng.
+Số lớn thứ 3 là a[i-1].
+3. Như câu 2 nhưng a[i] và a[i-1] bằng nhau thì tăng biến đếm, nếu không bằng thì 
+4. Thay đổi điều kiện so sánh thay vì dùng a[i] hay a[j] thì đổi thành abs(a[i]) hoặc abs(a[j])
+5. Sắp xếp dãy giảm dần. Sau đó sắp xếp lại đoạn dãy âm bằng cách swap phần từ đầu và cuối của dãy âm phía sau.
+6. Chuyển các phần tử chẵn sang trái, lẻ sang phải và sắp xếp từng đoạn chẵn/lẻ.
+7. 
+void sortArrayBTThemCau7(int A[], int n)
+{
+    // Duyệt qua mảng và sắp xếp số chẵn tăng dần và số lẻ giảm dần
+    for (int i = 0; i < n-1; i++)
+    {
+        for (int j = i + 1; j < n; j++) 
+        {
+            // Nếu cả hai số đều chẵn và thứ tự không đúng thì hoán đổi
+            if (A[i] % 2 == 0 && A[j] % 2 == 0 && A[i] > A[j]) 
+            {
+                swap(A[i], A[j]);
+            }
+            //Nếu cả hai số đều lẻ và thứ tự không đúng thì hoán đổi
+            if (A[i] % 2 != 0 && A[j] % 2 != 0 && A[i] < A[j])
+            {
+                swap(A[i], A[j]);
+            }
+        }
+    }
+}

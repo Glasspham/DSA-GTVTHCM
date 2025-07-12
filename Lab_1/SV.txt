@@ -1,0 +1,88 @@
+class Student {
+private:
+    int id;
+    string name;
+    int birthYear;
+
+public:
+    // Constructor
+    void printStudent() const {
+        cout << "ID: " << id << " | Name: " << name << " | Birth Year: " << birthYear << endl;
+    }
+
+    static void printStudents(const Student students[], int n) {
+        for (int i = 0; i < n; ++i) {
+            students[i].printStudent();
+        }
+    }
+
+    static void sortByID(Student students[], int n) {
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (students[j].id > students[j + 1].id) {
+                    swap(students[j], students[j + 1]);
+                }
+            }
+        }
+    }
+
+    static void sortByNameAndYear(Student students[], int n) {
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                string lastWord1 = getLastWord(students[j].name);
+                string lastWord2 = getLastWord(students[j + 1].name);
+                if (lastWord1 > lastWord2 || 
+                    (lastWord1 == lastWord2 && students[j].birthYear > students[j + 1].birthYear)) {
+                    swap(students[j], students[j + 1]);
+                }
+            }
+        }
+    }
+
+    static void swap(Student& a, Student& b) {
+        Student temp = a;
+        a = b;
+        b = temp;
+    }
+
+    static string getLastWord(const string& str) {
+        istringstream iss(str);
+        string word;
+        string lastWord;
+
+        while (iss >> word) {
+            lastWord = word;
+        }
+
+        return lastWord;
+    }
+
+    int getID() const {
+        return id;
+    }
+};
+
+int main() {
+    Student students[] = {
+        Student(1005, "Tran Minh Thanh", 1991),
+        Student(1001, "Tran Thi Bich", 1988),
+        Student(1003, "Tran Minh Thanh", 1990),
+        Student(1000, "Vo Quang Vinh", 1990),
+        Student(1008, "Nguyen Van An", 1990)
+    };
+
+    int n = sizeof(students) / sizeof(students[0]);
+
+    cout << "DANH SACH SV:\n";
+    Student::printStudents(students, n);
+
+    Student::sortByID(students, n);
+    cout << "\nSAP THEO MSSV:\n";
+    Student::printStudents(students, n);
+
+    Student::sortByNameAndYear(students, n);
+    cout << "\nSAP THEO TEN VA NAM SINH:\n";
+    Student::printStudents(students, n);
+
+    return 0;
+}

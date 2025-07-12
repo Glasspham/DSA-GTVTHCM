@@ -1,0 +1,49 @@
+apple: qua tao
+banana: qua chuoi
+cat: con meo
+dog: con cho
+elephant: con voi
+fish: con ca
+grape: qua nho
+house: ngoi nha
+internet: mang internet
+job: cong viec
+king: nha vua
+lion: su tu
+mouse: con chuot
+notebook: so tay
+orange: qua cam
+pencil: but chi
+queen: hoang hau
+rain: mua
+sun: mat troi
+tree: cai cay
+umbrella: cay du
+village: lang que
+water: nuoc
+zoo: so thu
+
+English: apple -> Vietnamese: qua tao
+English: banana -> Vietnamese: qua chuoi
+English: cat -> Vietnamese: con meo
+English: dog -> Vietnamese: con cho
+English: elephant -> Vietnamese: con voi
+English: fish -> Vietnamese: con ca
+English: grape -> Vietnamese: qua nho
+English: house -> Vietnamese: ngoi nha
+English: internet -> Vietnamese: mang internet
+English: job -> Vietnamese: cong viec
+English: king -> Vietnamese: nha vua
+English: lion -> Vietnamese: vua su tu
+English: mouse -> Vietnamese: con chuot
+English: notebook -> Vietnamese: so tay
+English: orange -> Vietnamese: qua cam
+English: pencil -> Vietnamese: but chi
+English: queen -> Vietnamese: hoang hau
+English: rain -> Vietnamese: mua
+English: sun -> Vietnamese: mat troi
+English: tree -> Vietnamese: cai cay
+English: umbrella -> Vietnamese: cay du
+English: village -> Vietnamese: lang que
+English: water -> Vietnamese: nuoc
+English: zoo -> Vietnamese: so thu
